@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../const/style.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class DefaultLayout extends StatelessWidget {
   final Color? backgroundColor;
@@ -24,7 +23,7 @@ class DefaultLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
-          backgroundColor ?? Theme.of(context).colorScheme.background,
+          backgroundColor ?? NeumorphicTheme.baseColor(context),
       appBar: renderAppBar(),
       body: Padding(
         padding: EdgeInsets.all(padding),

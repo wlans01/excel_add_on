@@ -34,6 +34,7 @@ class FilesProvider extends StateNotifier<FilesModel> {
 
   void fileRemove(XFile file) async {
     state = state.copyWith(files: state.files.where((e) => e != file).toList());
+    getFirstFileData();
     if (state.files.isEmpty) {
       state =
           FilesModel(files: [], col: 0, row: 0, firstData: [], copyData: []);

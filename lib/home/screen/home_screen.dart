@@ -4,8 +4,9 @@ import 'package:excel_add_on/home/screen/data_table_screen.dart';
 import 'package:excel_add_on/home/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import '../../common/const/style.dart';
+import '../../common/const/text.dart';
 
 class HomeScreen extends ConsumerWidget {
   static String get routeName => 'home';
@@ -23,16 +24,14 @@ class HomeScreen extends ConsumerWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(DEFAULT_PADDING),
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+              child: Neumorphic(
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  height: double.infinity,
+                  child: fileState.firstData.isEmpty
+                      ? Text(app_description)
+                      : const DataTablePage(),
                 ),
-                child: fileState.firstData.isEmpty
-                    ? const Text('파일없음')
-                    : const DataTablePage(),
               ),
             ),
             const SizedBox(
@@ -45,3 +44,4 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
